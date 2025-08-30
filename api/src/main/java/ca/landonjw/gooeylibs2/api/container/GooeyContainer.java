@@ -193,7 +193,7 @@ public class GooeyContainer extends AbstractContainerMenu {
 
     public void open() {
         if (player.containerMenu == this) return;
-        player.doCloseContainer();
+        player.closeContainer();
         player.containerMenu = this;
 
         ((ServerPlayerAccessor) player).gooeylibs$setContainerCounter(player.containerMenu.containerId);
@@ -227,8 +227,7 @@ public class GooeyContainer extends AbstractContainerMenu {
         return ItemStack.EMPTY;
     }
 
-    @Override
-    public void clicked(int slot, int dragType, @NotNull ClickType type, @NotNull Player player) {
+    public void customClicked(int slot, int dragType, @NotNull ClickType type, @NotNull Player player) {
         // Don't do anything if user is only clicking edge of UI.
         if (slot == -1 || slot == -999) {
             if (cursorButton != null) {
